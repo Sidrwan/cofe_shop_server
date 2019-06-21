@@ -14,15 +14,15 @@ def get_cofe_list():
     html = get_html("https://shoko.ru/menu/kofe/")
     if html:
         soup = BeautifulSoup(html, 'html5lib')
-        all_cofe_list = soup.find('div', class="product-card__inner").findAll(class="title", class="price", 'http://shoko.ru' + alt src="/upload/resize_cache/s1/fit_70_700x700/iblock/2f2/2f2ecd5dd54284e7b5bae80f22fb7d9e.jpg",
-                                                                                                            'http://shoko.ru' + alt src="/upload/resize_cache/s1/fit_70_700x700/iblock/dc0/dc0f689a7bfd9d4b44ab963a7f940d2c.jpg",
-                                                                                                            'http://shoko.ru' + alt src="/upload/resize_cache/s1/fit_70_700x700/iblock/290/290be3ac16503b65421e3277ca46ec21.jpg",
-                                                                                                            'http://shoko.ru' + alt src="/upload/resize_cache/s1/fit_70_700x700/iblock/290/290be3ac16503b65421e3277ca46ec21.jpg",)
+        all_cofe_list = soup.find('div', class_="product-card__inner")
+        for item in all_cofe_list:
+            a = 'https://shoko.ru' + item.find('img')['data_src']
+
         result_cofe_list = []
         for cofe_list in all_cofe_list:
-            title = cofe.find(class="title").text
-         #  picture = cofe.find(???).img     Пока непонятно как заполнять
-            price = cofe.find(class="price").text
+            title = cofe.find('h4').text
+            picture = cofe.find('dev').jpg
+            price = cofe.find("text").text
             result_cofe_list.append({
                 'title': title,
                 'picture': picture,
