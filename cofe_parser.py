@@ -14,19 +14,40 @@ def get_cofe_list():
     html = get_html("https://shoko.ru/menu/kofe/")
     if html:
         soup = BeautifulSoup(html, 'html5lib')
-        all_cofe_list = soup.find('div', class_="product-card__inner")
-        for item in all_cofe_list:
-            a = 'https://shoko.ru' + item.find('img')['data_src']
-
+        all_cofe_list = soup.findAll('div', class_='product-card__inner')
         result_cofe_list = []
-        for cofe_list in all_cofe_list:
-            title = cofe.find('h4').text
-            picture = cofe.find('dev').jpg
-            price = cofe.find("text").text
+        for item in all_cofe_list:
+            image_link = 'https://shoko.ru' + item.find('img')['data-src']
+            title = item.find('h4').text
+            price = item.find('div', class_='price').text.split()[0]
+
             result_cofe_list.append({
                 'title': title,
-                'picture': picture,
+                'picture': image_link,
                 'price': price,
             })
-        return result_cofe_list
-    return False
+
+def get_product_list():
+  html = get_html("https://shoko.ru/menu/sendvichi-i-omlety/")
+    if html:
+        soup = BeautifulSoup(html, 'html5lib')
+        all_product_list = soup.findAll('div', class_='product-card__inner')
+        result_product_list = []
+        for item in all_cofe_list:
+            image_link = 'https://shoko.ru' + item.find('img')['data-src']
+            title = item.find('h4').text
+            price = item.find('div', class_='price').text.split()[0]
+
+            result_product_list.append({
+                'title': title,
+                'picture': image_link,
+                'price': price,
+            })
+
+            
+        return result_product_list
+
+if __name__ == "__main__":
+    kofe_list = get_cofe_list()
+    product_list = get_product_list()
+    print(kofe_list[-1],product_list[-1])
