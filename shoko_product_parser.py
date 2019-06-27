@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from webapp.models import db, News
+
 def get_html(url):
     try:
         result = requests.get(url)
