@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from webapp.models import db, Products
+from webapp.model import db, Products
 
 from webapp.shoko_product_parser import get_product_list
 

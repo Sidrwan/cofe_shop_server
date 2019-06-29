@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from webapp.models import db, News
+from webapp.model import db, Products
 
 def get_html(url):
     try:
