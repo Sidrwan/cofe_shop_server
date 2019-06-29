@@ -1,7 +1,9 @@
+from datetime import datetime
+
 import requests
 from bs4 import BeautifulSoup
 
-from webapp.model import db, Products
+from webapp.models import db, Products
 
 def get_html(url):
     try:
@@ -23,12 +25,13 @@ def get_product_list(url):
             title = item.find('h4').text
             price = item.find('div', class_='price').text.split()[0]
 
-            result_product_list.append({
-                'title': title,
-                'picture': image_link,
-                'price': price,
-            })
+            save_Products(title=title, price=price, image_link=image_link)
 
-            
-        return result_product_list
 
+
+def save_Products(title, price, image_link):
+    Products_exists = Products.query.filter(Products.image_link == url).count()
+    if not Products_exists:
+        new_Products = Products(title=title, price=price, image_link=image_link)
+        db.session.add(new_Products)
+        db.session.commit()
