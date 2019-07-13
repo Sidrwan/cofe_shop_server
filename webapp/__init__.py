@@ -13,9 +13,7 @@ def create_app():
     @app.route("/")
     def index():
         title = 'Меню Fake Шоколадницы '
-        kofe_list = get_product_list(app.config['PRODUCTS_URL_1'])
-        shavarma_list = get_product_list(app.config['PRODUCTS_URL_2'])
         Products_list = Products.query.all()
-        return render_template('index.html', page_title=title, kofe_list=kofe_list, shavarma_list=shavarma_list)
+        return render_template('index.html', page_title=title, Products_list=Products_list)
 
     return app
