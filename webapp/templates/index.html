@@ -17,20 +17,20 @@
         </div>
     </div>
     <div class='container'>
-      <h2>Наше меню кофе</h2>
+      <h2>Наше меню</h2>
       <div class='row'>
-      {% for kofe in kofe_list %}
+      {% for product in Products_list %}
        {% if loop.index % 3 != 0 %}
               <div class='col'>
-                  <h4>{{ kofe.title }}</h4>
-                  <h5>{{ kofe.price }} руб</h5>
-                  <img src={{ kofe.picture }} width=300 height=200>    
+                  <h4>{{ product.title }}</h4>
+                  <h5>{{ product.price }} руб</h5>
+                  <img src={{ product.picture }} width=300 height=200>    
               </div>
         {% else %}
           <div class='col'>
-              <h4>{{ kofe.title }}</h4>
-              <h5>{{ kofe.price }} руб</h5>
-              <img src={{ kofe.picture }} width=300 height=200>    
+              <h4>{{ product.title }}</h4>
+              <h5>{{ product.price }} руб</h5>
+              <img src={{ product.picture }} width=300 height=200>    
           </div>
           </div>
           <div class='row'>
@@ -38,29 +38,6 @@
       {% endfor %}
     </div>
     
-    <br>
-
-    <div class='container'>
-      <h2>Наше меню роллов</h2>
-      <div class='row'>
-      {% for shawarma in shavarma_list %}
-       {% if loop.index % 3 != 0 %}
-              <div class='col'>
-                  <h4>{{ shawarma.title }}</h4>
-                  <h5>{{ shawarma.price }} руб </h5>
-                  <img src={{ shawarma.picture }} width=300 height=200>    
-              </div>
-        {% else %}
-          <div class='col'>
-              <h4>{{ shawarma.title }}</h4>
-              <h5>{{ shawarma.price }} руб</h5>
-              <img src={{ shawarma.picture }} width=300 height=200>    
-          </div>
-          </div>
-          <div class='row'>
-       {% endif%}
-      {% endfor %}
-    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
