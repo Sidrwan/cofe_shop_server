@@ -13,6 +13,15 @@
   <body>
     <div class='container'>
         <div class='col-10'>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-warning" role="alert">
+                {% for message in messages %}
+                    {{ message }}<br>
+                {% endfor %}
+            </div>
+            {% endif %}
+          {% endwith %}
     <h1>Fake Шоколадница</h1>
         </div>
     </div>
@@ -21,16 +30,20 @@
       <div class='row'>
       {% for product in Products_list %}
        {% if loop.index % 3 != 0 %}
-              <div class='col'>
-                  <h4>{{ product.title }}</h4>
-                  <h5>{{ product.price }} руб</h5>
-                  <img src={{ product.picture }} width=300 height=200>    
-              </div>
+          <div class='col'>
+              <h4>{{ product.title }}</h4>
+              <h5>{{ product.price }} руб</h5>
+              <img src = {{ product.image }}
+              width='300' 
+              height='200'>
+          </div>
         {% else %}
           <div class='col'>
               <h4>{{ product.title }}</h4>
               <h5>{{ product.price }} руб</h5>
-              <img src={{ product.picture }} width=300 height=200>    
+              <img src = {{ product.image }}
+              width='300'
+              height='200'>    
           </div>
           </div>
           <div class='row'>
